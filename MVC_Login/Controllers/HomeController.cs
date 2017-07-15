@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC_Login.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,19 @@ namespace MVC_Login.Controllers
             return View();
         }
 
+        [HttpPost]
+
+        public ActionResult Index(Login model)
+        {
+            if (ModelState.IsValid)
+            {
+                TempData["message"] = "登入成功";
+                return View();                
+            } 
+            else {
+                return View(model);
+            }
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
